@@ -5,7 +5,7 @@ import { AppService } from './app.service.js';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-@Get()
+  @Get()
   @Render('index')
   getArticles() {
     return {
@@ -14,7 +14,7 @@ export class AppController {
     }
   }
 
-@Get('minview')
+  @Get('minview')
   @Render('minview')
   getMinView(@Query('minViews') view?: string) {
     const minViews = Number(view);
@@ -26,6 +26,18 @@ export class AppController {
       title: 'MinView',
       articles: results,
       minViews: view ?? '',
-      }
+    }
   }
+
+  @Get('newData')
+  @Render('newData')
+  getNewData() {
+    
+
+    return {
+      title: 'New Data',
+    
+    }
+  }
+
 }

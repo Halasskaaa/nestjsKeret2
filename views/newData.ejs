@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1><%= title %></h1>
+
+    <form action="/minview" method="get">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= title %>">
+        <label for="url">Url:</label>
+        <input type="text" id="url" name="url" value="<%= url %>">
+        <label for="views">Views:</label>
+        <input type="number" id="views" name="views" value="<%= views
+        <button type="submit">Add new data</button>
+    </form>
+    
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Visits</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% articles.forEach(article => { %>
+                <tr>
+                    <td><a href="<%= article.url %>"><%= article.title %></a></td>
+                    <td><%= article.views %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+
+        <div class="footer">
+            <a href="/">Főoldal</a> <br>
+            <a href="/minView">Szűrés</a>               
+        </div>
+         
+</body>
+</html>
