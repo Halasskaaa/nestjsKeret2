@@ -1,5 +1,7 @@
-import { Controller, Get, Query, Render } from '@nestjs/common';
+import { Controller, Get, Post, Query, Render } from '@nestjs/common';
 import { AppService } from './app.service.js';
+import { createArticleViewDto } from './createarticleview.js';
+import { ArticleView } from './szocikk.js';
 
 @Controller()
 export class AppController {
@@ -31,13 +33,16 @@ export class AppController {
 
   @Get('newData')
   @Render('newData')
-  getNewData() {
-    
-
-    return {
-      title: 'New Data',
-    
+  getNewData() {}
+  @Post('new')
+  newData(@Body() body: createArticleViewDto) {
+    const newArticle: ArticleView = {
+      title: body.title,
+      url: body.url,
+      views: body.views,
     }
-  }
+    this.articleViews.push(newArticle);
 
+
+  }
 }
