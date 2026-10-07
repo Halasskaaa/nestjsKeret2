@@ -1,5 +1,42 @@
 body {
-    background-color: rgb(232, 219, 202);
+    background-color: rgb(215, 214, 250);
     color:rgb(58, 46, 135);
 }
 
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+thead tr th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;       
+    padding: 10px;            
+    border: 1px solid #ddd;    
+}
+
+tbody tr td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+tbody tr {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 600px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

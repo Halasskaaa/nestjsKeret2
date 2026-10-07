@@ -10,6 +10,21 @@
 </head>
 <body>
     <h1><%= title %></h1>
-    Hello EJS!
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Visits</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% articles.forEach(article => { %>
+                <tr class="<%= article.views > 1000 ? 'bold' : '' %>">
+                    <td><a href="<%= article.url %>"><%= article.title %></a></td>
+                    <td><%= article.views %></td>
+                </tr>
+            <% }) %>
+        </tbody>
 </body>
 </html>
