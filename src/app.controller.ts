@@ -31,18 +31,24 @@ export class AppController {
     }
   }
 
-  @Get('newData')
-  @Render('newData')
-  getNewData() {}
-  @Post('new')
-  newData(@Body() body: createArticleViewDto) {
-    const newArticle: ArticleView = {
-      title: body.title,
-      url: body.url,
-      views: body.views,
+  @Post("newData")
+  @Render("newData")
+  newData(@Body()body: ArticleViewDto){
+
+    if(!body.title || body.title.length ===0){
+      return{
+        error: "túl rövid a cím"
+      }
     }
-    this.articleViews.push(newArticle);
 
+    const newArticle : ArticleView={
+      title: body.title,
+      url:body.url,
+      views:parseInt(body.views)
+    }
+    this.articles.push(newArticle)
 
+    return{
+      success:true
+    }
   }
-}
