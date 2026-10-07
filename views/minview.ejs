@@ -10,7 +10,16 @@
 </head>
 <body>
     <h1><%= title %></h1>
+
+    <form action="/minview" method="get">
+        <label for="minViews">Minimum Views:</label>
+        <input type="number" id="minViews" name="minViews" value="<%= minViews %>" min="0">
+        <button type="submit">Filter</button>
+    </form>
     
+    <% if(articles.length === 0) { %>
+        <p>Nincs találat.</p>
+    <% } else { %>
     <table>
         <thead>
             <tr>
@@ -19,12 +28,17 @@
             </tr>
         </thead>
         <tbody>
-            
+            <% articles.forEach(article => { %>
+                <tr>
+                    <td><a href="<%= article.url %>"><%= article.title %></a></td>
+                    <td><%= article.views %></td>
+                </tr>
+            <% }); %>
         </tbody>
-
+        <% } %>
 
         <div class="footer">
-            <a href="/minview">Szűrés</a> <br>
+            <a href="/">Főoldal</a> <br>
             <a href="/new ">Új adat</a>               
         </div>
          

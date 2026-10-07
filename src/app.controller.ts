@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Query, Render } from '@nestjs/common';
 import { AppService } from './app.service.js';
 
 @Controller()
@@ -16,9 +16,16 @@ export class AppController {
 
 @Get('minview')
   @Render('minview')
-  getMinView() {
+  getMinView(@Query('minViews') view?: string) {
+    const minViews = Number(view);
+
+    const results = this.appService.getArticles().filter(
+      article => article.views >= minViews
+    );
     return {
       title: 'MinView',
-    }
+      articles: results,
+      minViews: view ?? '',
+      }
   }
 }

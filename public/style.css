@@ -3,6 +3,9 @@ body {
     color:rgb(58, 46, 135);
 }
 
+.bold {
+    font-weight: bold;
+}
 
 table {
     width: 100%;
